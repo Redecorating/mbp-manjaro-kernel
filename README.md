@@ -30,4 +30,4 @@ makepkg -si
 ## Resources
 
  - Discord Server: <https://discord.gg/Uw56rqW>
- - mbp-manjaro Repo: <https://github.com/JPyke3/mbp-manjaro>
+ - mbp-manjaro Repo: <https://github.com/JPyke3/mbp-manjaro> 
