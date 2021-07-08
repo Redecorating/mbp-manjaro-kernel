@@ -9,9 +9,9 @@ jobs:
     container:
       image: manjarolinux/base
       env:
-        PKGDEST: /home/builder/packages
+        PKGDEST: /home/builduser/packages
     steps:
-      - run: pacman -Syu git fakeroot bc docbook-xsl elfutils inetutils kmod xmlto base-devel gnupg --noconfirm
+      - run: pacman -Syu git fakeroot bc docbook-xsl elfutils inetutils kmod xmlto base-devel gnupg pahole cpio --noconfirm
         name: Update image and Download Depends
       - uses: actions/checkout@v2
         name: Checkout the Repository
@@ -21,7 +21,7 @@ jobs:
         name: Copy Repository to Builder Home Directory
       - run: mkdir -p /home/builduser/packages
         name: Create final package location
-      - run: chown builder:builduser -R /home/builduser
+      - run: chown builduser:builduser -R /home/builduser
         name: Chown builder home dir
       - run: su builduser -c "cd /home/builduser/"$(echo -e "$GITHUB_REPOSITORY" | sed 's/.*\///g')"; makepkg -s"
         name: Compile the Kernel
